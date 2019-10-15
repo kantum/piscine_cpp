@@ -4,7 +4,6 @@ CXX = clang++
 RM = rm -f
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
 LDFLAGS = -g
-LDLIBS =
 SRCS = main.cpp contact.class.cpp
 HEADERS = -I./
 OBJS = $(subst .cpp,.o,$(SRCS))

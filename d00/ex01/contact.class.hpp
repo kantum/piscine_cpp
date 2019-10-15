@@ -9,7 +9,6 @@ class	Contact
 {
 	private:
 
-		int				index;
 		static int		_size;
 
 	public:
@@ -31,11 +30,9 @@ class	Contact
 
 		static int		getSize(void);
 		static bool		increaseSize(void);
-		void			inc(void);
-		int				getIndex(void);
 };
 
-void	showList(Contact *l);
+bool	showList(Contact *l);
 void	print(std::string str);
 void	printnl(std::string str);
 void	wprint(std::wstring str);

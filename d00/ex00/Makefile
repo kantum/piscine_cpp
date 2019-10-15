@@ -4,7 +4,6 @@ CXX = clang++
 RM = rm -f
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
 LDFLAGS = -g
-LDLIBS =
 LD = ld
 SRCS = megaphone.cpp
 OBJS = $(subst .cpp,.o,$(SRCS))

@@ -1,10 +1,6 @@
 #include <string>
-#include <cstring>
-#include <ctype.h>
-#include <sstream>
 #include <iostream>
 #include <iomanip>
-#include <string_view>
 
 #include "contact.class.hpp"
 
@@ -75,8 +71,6 @@ int	main(void)
 		if (!user_input.compare("ADD"))
 		{
 			int size = Contact::getSize();
-			if (size > 2)
-				printnl("normal test");
 			if (size > 7)
 				printnl("You have too much friends, consider buying an extension");
 			else
@@ -84,8 +78,8 @@ int	main(void)
 		}
 		else if (!user_input.compare("SEARCH"))
 		{
-			showList(phoneBook);
-			showField(phoneBook);
+			if (!showList(phoneBook))
+				showField(phoneBook);
 		}
 		else if (!user_input.compare("EXIT"))
 			break;

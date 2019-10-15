@@ -1,8 +1,11 @@
+#include <string>
+#include <iostream>
+#include <iomanip>
+
 #include "contact.class.hpp"
 
 Contact::Contact(void)
 {
-	this->index = getSize();
 	return;
 }
 
@@ -40,16 +43,6 @@ int		Contact::getSize(void)
 	return Contact::_size;
 }
 
-void	Contact::inc(void)
-{
-	this->index++;
-}
-
-int		Contact::getIndex(void)
-{
-	return (this->index);
-}
-
 bool is_number(const std::string& s)
 {
 	std::string::const_iterator it = s.begin();
@@ -85,12 +78,12 @@ void showField(Contact *l)
 	std::wcout << "Darkest Secret:  "<< l[index].darkestSecret << std::endl;
 }
 
-void showList(Contact *l)
+bool showList(Contact *l)
 {
 	if (Contact::getSize() == 0)
 	{
 		printnl("You don't have any friend, do you want to try 42 ?");
-		return;
+		return 1;
 	}
 	printnl("");
 	headerContact();
@@ -101,6 +94,7 @@ void showList(Contact *l)
 		print("|");
 		showContact(l[i].firstName, l[i].lastName, l[i].nickName);
 	}
+	return 0;
 }
 
 void	showContact(std::wstring fname, std::wstring lname, std::wstring nname)
