@@ -67,7 +67,8 @@ std::string	Pony::getBeersByDay() const
 void 		Pony::setPreferredCar(std::string preferredCar)
 {
 	this->_preferredCar = preferredCar;
-	std::cout << "Pony " << this->_name << 	" changed his mind about teslas" << std::endl;
+	std::cout << "Pony " << this->_name;
+   	std::cout << " changed his mind about teslas" << std::endl;
 }
 
 std::string	Pony::getPreferredCar() const
@@ -85,6 +86,7 @@ void 		Pony::getInfos()
     std::cout << "beersByDay   " << this->_beersByDay   << std::endl;
     std::cout << "preferredCar " << this->_preferredCar << std::endl;
 }
+
 Pony	*ponyOnTheHeap(std::string name)
 {
 	Pony *ret = new Pony(name);

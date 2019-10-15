@@ -29,7 +29,7 @@ class	Pony
 		std::string	getRunningTime() const;
 		void 		setBeersByDay(std::string beers);
 		std::string	getBeersByDay() const;
-		void 		setPreferredCar(std::string runningTime);
+		void 		setPreferredCar(std::string preferredCar);
 		std::string	getPreferredCar() const;
 		void 		getInfos();
 };
