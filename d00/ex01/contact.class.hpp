@@ -2,10 +2,18 @@
 #define CONTACT_CLASS_H
 
 #include <string>
+#include <iostream>
+#include <iomanip>
 
 class	Contact
 {
+	private:
+
+		int				index;
+		static int		_size;
+
 	public:
+
 		Contact(void);
 		~Contact(void);
 
@@ -25,9 +33,14 @@ class	Contact
 		static bool		increaseSize(void);
 		void			inc(void);
 		int				getIndex(void);
-	private:
-		int				index;
-		static int		_size;
 };
+
+void	showList(Contact *l);
+void	print(std::string str);
+void	printnl(std::string str);
+void	wprint(std::wstring str);
+void	headerContact(void);
+void	showField(Contact *l);
+void	showContact(std::wstring fname, std::wstring lname, std::wstring nname);
 
 #endif
