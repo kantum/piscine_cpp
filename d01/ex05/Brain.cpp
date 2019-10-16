@@ -10,6 +10,5 @@ std::string		Brain::identify(void) const
 	std::stringstream ss;
 	ss << address;  
 	std::string name = ss.str(); 
-	//std::cout << "identify Brain" << std::endl;
 	return name; 
 }
