@@ -1,5 +1,3 @@
-#include <sstream> //for std::stringstream 
-#include <string>  //for std::string
 #include "Brain.hpp"
 
 Brain::Brain(void) { }
