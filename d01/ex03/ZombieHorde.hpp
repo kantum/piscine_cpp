@@ -4,11 +4,14 @@
 class	ZombieHorde
 {
 	private:
-		Zombie *horde;
+		Zombie 			*horde;
+		unsigned int	nzombie;
 
 	public:
 		ZombieHorde(unsigned int n);
 		~ZombieHorde(void);
+
+	void	announce(void);
 };
 
 #endif
