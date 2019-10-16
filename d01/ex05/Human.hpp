@@ -4,7 +4,7 @@
 #include "Brain.hpp"
 #include "Human.hpp"
 
-class Human : public Brain
+class Human
 {
 	private:
 
