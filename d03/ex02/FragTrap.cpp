@@ -2,24 +2,46 @@
 #include <ctime>
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name)
+FragTrap::FragTrap(void)
 {
-	std::srand(std::time(0));
-	std::cout << "A FR4G-TP is born, his name is " << name << std::endl;
 }
 
-//FragTrap::FragTrap(FragTrap const &)
-//{
-//}
+FragTrap::FragTrap(std::string name)
+{
+	std::srand(std::time(0));
+	std::cout << "A FR4G-TP is born, his name is " << name;
+	std::cout << std::endl;
+	this->_hitPoints = 100;
+	this->_maxHitPoints = 100;
+	this->_energyPoints = 100;
+	this->_maxEnergyPoints = 100;
+	this->_level = 1;
+	this->_name = name;
+	this->_meleeAttackDamage = 30;
+	this->_rangedAttackDamage = 20;
+	this->_armorDamageReduction = 5;
+}
 
-//FragTrap::FragTrap& operator=(FragTrap const &)
-//{
-//}
-//
-//FragTrap::~FragTrap(void)
-//{
-//	std::cout << "FR4G-TP " << this->_name << " is now dead" << std::endl;
-//}
+FragTrap::FragTrap(FragTrap const & src)
+{
+	std::cout << "copy of " << src.getName();
+	std::cout << " to " << this->getName();
+	std::cout << std::endl;
+	*this = src;
+}
+
+FragTrap & FragTrap::operator=(FragTrap const & rhs)
+{
+	std::cout << "assignation operator called" << std::endl;
+	if (this != &rhs)
+		this->_name = rhs.getName();
+	return *this;
+}
+
+FragTrap::~FragTrap(void)
+{
+	std::cout << "FR4G-TP " << this->_name << " is now dead" << std::endl;
+}
 
 void		A(std::string const & target)
 {

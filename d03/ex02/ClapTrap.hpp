@@ -20,9 +20,10 @@ class ClapTrap
 
 	public:
 
+		ClapTrap(void);
 		ClapTrap(std::string name);
 		ClapTrap(ClapTrap const &);
-//		ClapTrap& operator=(ClapTrap const &);
+		ClapTrap& operator=(ClapTrap const &);
 		~ClapTrap(void);
 
 		void		setHitPoints(int n);
@@ -49,9 +50,6 @@ class ClapTrap
 		void		meleeAttack(std::string const & target);
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
-		void		vaulthunter_dot_exe(std::string const & target);
-		void		showValues(void);
 };
 
 #endif
-
