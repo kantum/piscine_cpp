@@ -4,6 +4,10 @@
 #include "ScavTrap.hpp"
 #include "challenges.hpp"
 
+ScavTrap::ScavTrap(void)
+{
+}
+
 ScavTrap::ScavTrap(std::string name)
 {
 	std::srand(std::time(0));
@@ -19,6 +23,22 @@ ScavTrap::ScavTrap(std::string name)
 	this->_armorDamageReduction = 3;
 }
 
+ScavTrap::ScavTrap(ScavTrap const & src)
+{
+	std::cout << "copy of " << src.getName();
+	std::cout << " to " << this->getName();
+	std::cout << std::endl;
+	*this = src;
+}
+
+ScavTrap & ScavTrap::operator=(ScavTrap const & rhs)
+{
+	std::cout << "assignation operator called" << std::endl;
+	if (this != &rhs)
+		this->_name = rhs.getName();
+	return *this;
+}
+
 ScavTrap::~ScavTrap(void)
 {
 	std::cout << "SC4V-TP " << this->_name << " is now dead" << std::endl;
@@ -26,24 +46,22 @@ ScavTrap::~ScavTrap(void)
 
 void			ScavTrap::setHitPoints(int n)
 {
-	this->_hitPoints = n;
-}
-
-void			ScavTrap::setMaxHitPoints(int n)
-{
-	if (n < this->_maxHitPoints && n >= 0)
-		this->_maxHitPoints = n;
+	if (n <= this->getMaxHitPoints() && n >= 0)
+		this->_hitPoints = n;
+	else if (n < 0)
+		this->_hitPoints = 0;
+	else
+		this->_hitPoints = this->getMaxHitPoints();
 }
 
 void			ScavTrap::setEnergyPoints(int n)
 {
-	if (n < this->_maxHitPoints && n >= 0)
+	if (n <= this->getEnergyPoints() && n >= 0)
 		this->_energyPoints = n;
-}
-
-void			ScavTrap::setMaxEnergyPoints(int n)
-{
-	this->_maxEnergyPoints = n;
+	else if (n < 0)
+		this->_energyPoints = 0;
+	else
+		this->_energyPoints = this->getMaxEnergyPoints();
 }
 
 void			ScavTrap::setLevel(int n)

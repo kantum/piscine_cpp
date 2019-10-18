@@ -2,10 +2,15 @@
 #include <ctime>
 #include "FragTrap.hpp"
 
+FragTrap::FragTrap(void)
+{
+}
+
 FragTrap::FragTrap(std::string name)
 {
 	std::srand(std::time(0));
-	std::cout << "A FR4G-TP is born, his name is " << name << std::endl;
+	std::cout << "A FR4G-TP is born, his name is " << name;
+	std::cout << std::endl;
 	this->_hitPoints = 100;
 	this->_maxHitPoints = 100;
 	this->_energyPoints = 100;
@@ -17,20 +22,45 @@ FragTrap::FragTrap(std::string name)
 	this->_armorDamageReduction = 5;
 }
 
+FragTrap::FragTrap(FragTrap const & src)
+{
+	std::cout << "copy of " << src.getName();
+	std::cout << " to " << this->getName();
+	std::cout << std::endl;
+	*this = src;
+}
+
+FragTrap & FragTrap::operator=(FragTrap const & rhs)
+{
+	std::cout << "assignation operator called" << std::endl;
+	if (this != &rhs)
+		this->_name = rhs.getName();
+	return *this;
+}
+
 FragTrap::~FragTrap(void)
 {
-	std::cout << "FR4G-TP " << this->_name << " is now dead" << std::endl;
+	std::cout << "Destructor called, " << this->_name << " dies !" << std::endl;
 }
 
 void			FragTrap::setHitPoints(int n)
 {
-	this->_hitPoints = n;
+	if (n <= this->getMaxHitPoints() && n >= 0)
+		this->_hitPoints = n;
+	else if (n < 0)
+		this->_hitPoints = 0;
+	else
+		this->_hitPoints = this->getMaxHitPoints();
 }
 
 void			FragTrap::setEnergyPoints(int n)
 {
-	if (n < this->_maxHitPoints && n >= 0)
+	if (n <= this->getEnergyPoints() && n >= 0)
 		this->_energyPoints = n;
+	else if (n < 0)
+		this->_energyPoints = 0;
+	else
+		this->_energyPoints = this->getMaxEnergyPoints();
 }
 
 void			FragTrap::setLevel(int n)
@@ -110,16 +140,14 @@ void		FragTrap::meleeAttack(std::string const & target)
 
 void		FragTrap::takeDamage(unsigned int amount)
 {
+	this->setHitPoints(this->getHitPoints() - amount + this->_armorDamageReduction);
 	std::cout << "FR4G-TP " << this->_name << " takes " << amount << " of damage, he has now " << this->_hitPoints << " hit points..." << std::endl;
-	this->_hitPoints -= amount + this->_armorDamageReduction;
-	if (this->_hitPoints < 0)
-		this->_hitPoints = 0;
 }
 
 void		FragTrap::beRepaired(unsigned int amount)
 {
 	this->setHitPoints(this->_hitPoints + amount);
-	std::cout << "FR4G-TP " << this->_name << "is being repaired by " << amount << " !" << std::endl;
+	std::cout << "FR4G-TP " << this->_name << " is being repaired by " << amount << " !" << std::endl;
 }
 
 void		A(std::string const & target)

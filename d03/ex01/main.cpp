@@ -30,15 +30,32 @@ int		main()
 	john->vaulthunter_dot_exe(martine->getName());
 	john->vaulthunter_dot_exe(martine->getName());
 	martine->vaulthunter_dot_exe(john->getName());
-	std::cout << (john->getHitPoints());
 	martine->vaulthunter_dot_exe(john->getName());
-	std::cout << (john->getHitPoints());
 	martine->vaulthunter_dot_exe(john->getName());
 
 	std::cout << std::endl;
+
+	std::cout << (john->getHitPoints()) << std::endl;
 	martine->rangedAttack(john->getName());	
+	john->takeDamage(martine->getRangedAttackDamage());
+	std::cout << (john->getHitPoints()) << std::endl;
+
 	martine->rangedAttack(john->getName());	
+	john->takeDamage(martine->getRangedAttackDamage());
+	std::cout << (john->getHitPoints()) << std::endl;
+
 	martine->meleeAttack(john->getName());	
+	john->takeDamage(martine->getRangedAttackDamage());
+	std::cout << (john->getHitPoints()) << std::endl;
+
+	john->beRepaired(42);
+	std::cout << (john->getHitPoints()) << std::endl;
+
+	john->beRepaired(42);
+	std::cout << (john->getHitPoints()) << std::endl;
+
+	john->beRepaired(42);
+	std::cout << (john->getHitPoints()) << std::endl;
 
 	std::cout << std::endl;
 	john->vaulthunter_dot_exe(martine->getName());
