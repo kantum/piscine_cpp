@@ -3,7 +3,7 @@ CC = clang
 CXX = clang++
 RM = rm -f
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
-LDFLAGS = -g
+LDFLAGS = -g #-v
 SRCS = SuperTrap.cpp ClapTrap.cpp FragTrap.cpp NinjaTrap.cpp ScavTrap.cpp main.cpp
 HEADERS = -I./
 OBJS = $(subst .cpp,.o,$(SRCS))

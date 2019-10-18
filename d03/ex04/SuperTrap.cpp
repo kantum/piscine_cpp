@@ -1,26 +1,26 @@
-
 #include <iostream>
 #include <ctime>
 #include "SuperTrap.hpp"
 
 SuperTrap::SuperTrap(void)
 {
+
 }
 
 SuperTrap::SuperTrap(std::string name)
 {
 	std::srand(std::time(0));
-	std::cout << "A NINJ4-TP is born, his name is " << name;
+	std::cout << "A SUPER-TP is born, his name is " << name;
 	std::cout << std::endl;
-	this->_hitPoints = 60;
-	this->_maxHitPoints = 60;
-	this->_energyPoints = 100;
-	this->_maxEnergyPoints = 120;
-	this->_level = 1;
+	this->FragTrap::_hitPoints = 61;
+	this->FragTrap::_maxHitPoints = 60;
+	this->NinjaTrap::_energyPoints = 100;
+	this->NinjaTrap::_maxEnergyPoints = 120;
+	//this->_level = 1;
 	this->_name = name;
-	this->_meleeAttackDamage = 60;
-	this->_rangedAttackDamage = 5;
-	this->_armorDamageReduction = 0;
+	this->NinjaTrap::_meleeAttackDamage = 60;
+	this->FragTrap::_rangedAttackDamage = 5;
+	this->FragTrap::_armorDamageReduction = 0;
 }
 
 SuperTrap::SuperTrap(SuperTrap const & src)
@@ -42,3 +42,9 @@ SuperTrap & SuperTrap::operator=(SuperTrap const & rhs)
 SuperTrap::~SuperTrap(void)
 {
 }
+
+std::string			SuperTrap::getName(void) const
+{
+	return this->_name;
+}
+

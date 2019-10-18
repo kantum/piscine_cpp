@@ -3,6 +3,7 @@
 #include "ScavTrap.hpp"
 #include "ClapTrap.hpp"
 #include "NinjaTrap.hpp"
+#include "SuperTrap.hpp"
 
 int		main()
 {
@@ -77,6 +78,15 @@ int		main()
 	ninja2->ninjaShoeBox(*boby);
 	std::cout << std::endl;
 	ninja3->ninjaShoeBox(*ninja1);
+	std::cout << std::endl;
+
+	SuperTrap	*super = new SuperTrap("chuck noris");	
+
+	std::cout << super->FragTrap::getHitPoints();
+	std::cout << std::endl;
+	super->FragTrap::rangedAttack(ninja1->getName());
+	super->FragTrap::meleeAttack(ninja2->getName());
+	std::cout << super->FragTrap::getLevel();
 	std::cout << std::endl;
 
 	delete john;

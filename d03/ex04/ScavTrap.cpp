@@ -4,6 +4,10 @@
 #include "ScavTrap.hpp"
 #include "challenges.hpp"
 
+ScavTrap::ScavTrap(void)
+{
+}
+
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	std::srand(std::time(0));

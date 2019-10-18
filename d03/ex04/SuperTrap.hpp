@@ -1,4 +1,3 @@
-
 #ifndef SUPERTRAP_HPP
 # define SUPERTRAP_HPP
 #include <iostream>
@@ -7,9 +6,11 @@
 #include "ScavTrap.hpp"
 #include "NinjaTrap.hpp"
 
-class SuperTrap : public ClapTrap
+class SuperTrap : public ScavTrap, public FragTrap, public NinjaTrap
 {
-	private:
+	protected:
+
+		std::string	_name;
 
 	public:
 
@@ -19,6 +20,7 @@ class SuperTrap : public ClapTrap
 		SuperTrap& operator=(SuperTrap const & rhs);
 		~SuperTrap(void);
 
+		std::string	getName() const;
 };
 
 #endif
