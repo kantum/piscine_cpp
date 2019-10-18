@@ -56,6 +56,7 @@ int		main()
 
 	john->beRepaired(42);
 	std::cout << (john->getHitPoints()) << std::endl;
+	john->setEnergyPoints(42);
 
 	std::cout << std::endl;
 	john->vaulthunter_dot_exe(martine->getName());

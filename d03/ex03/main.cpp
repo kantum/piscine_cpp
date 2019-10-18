@@ -54,9 +54,10 @@ int		main()
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	FragTrap	*copyOfJohn = new FragTrap(*john);
+	FragTrap	*copyOfJohn(john);
 
 	std::cout << john->getName();
+	std::cout << std::endl;
 	std::cout << copyOfJohn->getName();
 	std::cout << std::endl;
 

@@ -25,7 +25,6 @@ FragTrap::FragTrap(std::string name)
 FragTrap::FragTrap(FragTrap const & src)
 {
 	std::cout << "copy of " << src.getName();
-	std::cout << " to " << this->getName();
 	std::cout << std::endl;
 	*this = src;
 }

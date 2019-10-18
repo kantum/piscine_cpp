@@ -31,6 +31,7 @@ FragTrap::FragTrap(FragTrap const & src)
 
 FragTrap & FragTrap::operator=(FragTrap const & rhs)
 {
+	std::cout << "FragTrap " << std::endl;
 	std::cout << "assignation operator called" << std::endl;
 	if (this != &rhs)
 		this->_name = rhs.getName();

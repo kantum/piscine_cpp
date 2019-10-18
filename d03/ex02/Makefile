@@ -1,4 +1,4 @@
-NAME = FragTrap_ScavTrap
+NAME = ClapTrap
 CC = clang
 CXX = clang++
 RM = rm -f

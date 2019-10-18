@@ -25,13 +25,13 @@ NinjaTrap::NinjaTrap(std::string name)
 NinjaTrap::NinjaTrap(NinjaTrap const & src)
 {
 	std::cout << "copy of " << src.getName();
-	std::cout << " to " << this->getName();
 	std::cout << std::endl;
 	*this = src;
 }
 
 NinjaTrap & NinjaTrap::operator=(NinjaTrap const & rhs)
 {
+	std::cout << "NinjaTrap " << std::endl;
 	std::cout << "assignation operator called" << std::endl;
 	if (this != &rhs)
 		this->_name = rhs.getName();

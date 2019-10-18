@@ -129,22 +129,36 @@ int			ClapTrap::getArmorDamageReduction(void) const
 
 void		ClapTrap::rangedAttack(std::string const & target)
 {
-	std::cout << "FR4G-TP " << this->_name << " attacks " << target << " at range, causing " << this->_rangedAttackDamage << " points of damage !" << std::endl;
+	std::cout << "FR4G-TP " << this->_name;
+	std::cout << " attacks " << target;
+	std::cout << " at range, causing ";
+	std::cout << this->_rangedAttackDamage << " points of damage !";
+	std::cout << std::endl;
 }
 
 void		ClapTrap::meleeAttack(std::string const & target)
 {
-	std::cout << "CL4P-TP " << this->_name << " attacks " << target << " at melee, causing " << this->_rangedAttackDamage << " points of damage !" << std::endl;
+	std::cout << "CL4P-TP " << this->_name;
+	std::cout << " attacks " << target;
+	std::cout << " at melee, causing " << this->_rangedAttackDamage;
+	std::cout << " points of damage !";
+	std::cout << std::endl;
 }
 
 void		ClapTrap::takeDamage(unsigned int amount)
 {
 	this->setHitPoints(this->getHitPoints() - amount + this->_armorDamageReduction);
-	std::cout << "CL4P-TP " << this->_name << " takes " << amount << " of damage, he has now " << this->_hitPoints << " hit points..." << std::endl;
+	std::cout << "CL4P-TP " << this->_name;
+	std::cout << " takes " << amount;
+	std::cout << " of damage, he has now " << this->_hitPoints;
+	std::cout << " hit points...";
+	std::cout << std::endl;
 }
 
 void		ClapTrap::beRepaired(unsigned int amount)
 {
 	this->setHitPoints(this->_hitPoints + amount);
-	std::cout << "CL4P-TP " << this->_name << " is being repaired by " << amount << " !" << std::endl;
+	std::cout << "CL4P-TP " << this->_name;
+	std::cout << " is being repaired by " << amount << " !";
+	std::cout << std::endl;
 }

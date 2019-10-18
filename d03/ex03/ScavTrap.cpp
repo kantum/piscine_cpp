@@ -7,8 +7,7 @@
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	std::srand(std::time(0));
-	std::cout << "A SC4V-TP is born, his name is " << name << std::endl;
-	this->_hitPoints = 100;
+	std::cout << "A SC4V-TP is born, his name is " << name << std::endl; this->_hitPoints = 100;
 	this->_maxHitPoints = 100;
 	this->_energyPoints = 50;
 	this->_maxEnergyPoints = 50;
@@ -28,6 +27,7 @@ ScavTrap::ScavTrap(ScavTrap const & src)
 
 ScavTrap & ScavTrap::operator=(ScavTrap const & rhs)
 {
+	std::cout << "ScavTrap " << std::endl;
 	std::cout << "assignation operator called" << std::endl;
 	if (this != &rhs)
 		this->_name = rhs.getName();

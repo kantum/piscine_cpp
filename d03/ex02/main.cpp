@@ -14,10 +14,8 @@ int		main()
 
 	std::cout << std::endl;
 	john->vaulthunter_dot_exe(martine->getName());
-	john->vaulthunter_dot_exe(martine->getName());
-	john->vaulthunter_dot_exe(martine->getName());
 	martine->vaulthunter_dot_exe(john->getName());
-	martine->vaulthunter_dot_exe(john->getName());
+	john->vaulthunter_dot_exe(martine->getName());
 	martine->vaulthunter_dot_exe(john->getName());
 
 	std::cout << std::endl;
@@ -41,21 +39,19 @@ int		main()
 	john->beRepaired(42);
 	std::cout << (john->getHitPoints()) << std::endl;
 
-	john->beRepaired(42);
-	std::cout << (john->getHitPoints()) << std::endl;
-
 	std::cout << std::endl;
+
 	john->vaulthunter_dot_exe(martine->getName());
 	john->vaulthunter_dot_exe(martine->getName());
 	john->vaulthunter_dot_exe(martine->getName());
 	
-
-	std::cout << std::endl;
 	std::cout << std::endl;
 
 	FragTrap	*copyOfJohn = new FragTrap(*john);
 
-	std::cout << john->getName();
+	std::cout << copyOfJohn->getName();
+	std::cout << std::endl;
+	copyOfJohn = martine;
 	std::cout << copyOfJohn->getName();
 	std::cout << std::endl;
 

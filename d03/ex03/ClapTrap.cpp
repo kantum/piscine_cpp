@@ -31,6 +31,7 @@ ClapTrap::ClapTrap(ClapTrap const & src)
 
 ClapTrap & ClapTrap::operator=(ClapTrap const & rhs)
 {
+	std::cout << "ClapTrap " << std::endl;
 	std::cout << "assignation operator called" << std::endl;
 	if (this != &rhs)
 		this->_name = rhs.getName();
