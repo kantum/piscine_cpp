@@ -17,7 +17,10 @@ class FragTrap {
 
 	public:
 
+		FragTrap(void);
 		FragTrap(std::string name);
+		FragTrap(FragTrap const & src);
+		FragTrap & operator=(FragTrap const & rhs);
 		~FragTrap(void);
 
 		void		setHitPoints(int n);

@@ -1,11 +1,16 @@
-#include "FragTrap.hpp"
 #include <iostream>
 #include <ctime>
+#include "FragTrap.hpp"
+
+FragTrap::FragTrap(void)
+{
+}
 
 FragTrap::FragTrap(std::string name)
 {
 	std::srand(std::time(0));
-	std::cout << "A newborn has come, his name is " << name << std::endl;
+	std::cout << "A FR4G-TP is born, his name is " << name;
+	std::cout << std::endl;
 	this->_hitPoints = 100;
 	this->_maxHitPoints = 100;
 	this->_energyPoints = 100;
@@ -17,6 +22,22 @@ FragTrap::FragTrap(std::string name)
 	this->_armorDamageReduction = 5;
 }
 
+FragTrap::FragTrap(FragTrap const & src)
+{
+	std::cout << "copy of " << src.getName();
+	std::cout << " to " << this->getName();
+	std::cout << std::endl;
+	*this = src;
+}
+
+FragTrap & FragTrap::operator=(FragTrap const & rhs)
+{
+	std::cout << "assignation operator called" << std::endl;
+	if (this != &rhs)
+		this->_name = rhs.getName();
+	return *this;
+}
+
 FragTrap::~FragTrap(void)
 {
 	std::cout << "Destructor called, " << this->_name << " dies !" << std::endl;
@@ -24,34 +45,27 @@ FragTrap::~FragTrap(void)
 
 void			FragTrap::setHitPoints(int n)
 {
-	this->_hitPoints = n;
-}
-
-void			FragTrap::setMaxHitPoints(int n)
-{
-	if (n < this->_maxHitPoints && n >= 0)
-		this->_maxHitPoints = n;
+	if (n <= this->getMaxHitPoints() && n >= 0)
+		this->_hitPoints = n;
+	else if (n < 0)
+		this->_hitPoints = 0;
+	else
+		this->_hitPoints = this->getMaxHitPoints();
 }
 
 void			FragTrap::setEnergyPoints(int n)
 {
-	if (n < this->_maxHitPoints && n >= 0)
+	if (n <= this->getEnergyPoints() && n >= 0)
 		this->_energyPoints = n;
-}
-
-void			FragTrap::setMaxEnergyPoints(int n)
-{
-	this->_maxEnergyPoints = n;
+	else if (n < 0)
+		this->_energyPoints = 0;
+	else
+		this->_energyPoints = this->getMaxEnergyPoints();
 }
 
 void			FragTrap::setLevel(int n)
 {
 	this->_level = n;
-}
-
-void			FragTrap::setName(std::string s)
-{
-	this->_name = s;
 }
 
 void			FragTrap::setMeleeAttackDamage(int n)
@@ -126,52 +140,54 @@ void		FragTrap::meleeAttack(std::string const & target)
 
 void		FragTrap::takeDamage(unsigned int amount)
 {
-	std::cout << this->_name << " takes " << amount << " of damage..." << std::endl;
-	this->_hitPoints -= amount + this->_armorDamageReduction;
-	if (this->_hitPoints < 0)
-		this->_hitPoints = 0;
+	this->setHitPoints(this->getHitPoints() - amount + this->_armorDamageReduction);
+	std::cout << "FR4G-TP " << this->_name << " takes " << amount << " of damage, he has now " << this->_hitPoints << " hit points..." << std::endl;
 }
 
 void		FragTrap::beRepaired(unsigned int amount)
 {
 	this->setHitPoints(this->_hitPoints + amount);
-	std::cout << this->_name << "is being repaired by " << amount << " !" << std::endl;
+	std::cout << "FR4G-TP " << this->_name << " is being repaired by " << amount << " !" << std::endl;
 }
 
 void		A(std::string const & target)
 {
-	std::cout << " Banana attacks " << target << std::endl;
+	std::cout << " attacks " << target << " with a glass of wine" << std::endl;
 }
 
 void		B(std::string const & target)
 {
-	std::cout << " simply call the police to arrest " << target << std::endl;
+	std::cout << " simply calls the police to arrest " << target << std::endl;
 }
 
 void		C(std::string const & target)
 {
-	std::cout << " use his hair to attack " << target << std::endl;
+	std::cout << " uses his hair to attack " << target << std::endl;
 }
 
 void		D(std::string const & target)
 {
-	std::cout << " raise some dragons to attack " << target << " later ..." << std::endl;
+	std::cout << " raises some dragons to attack " << target << " later ..." << std::endl;
 }
 
 void		E(std::string const & target)
 {
-	std::cout << " use a mac keyboard and put it in the mouth of " << target << std::endl;
+	std::cout << " uses a mac keyboard and put it in the mouth of " << target << std::endl;
 }
 
 void		FragTrap::vaulthunter_dot_exe(std::string const & target)
 {
 	if (this->_energyPoints < 25)
+	{
+		std::cout << "SC4V-TP ";
 		std::cout << "You have not enough energy to run this attack..." << std::endl;
+	}
 	else
 	{
-		std::cout << this->_name;
+		std::cout << "FR4G-TP " << this->_name;
 		this->_energyPoints -= 25;
 		void(*funcs[5])(std::string const & target) = { A, B, C, D, E};
 		(funcs[std::rand() % 5])(target);
 	}
 }
+

@@ -4,7 +4,7 @@
 int		main()
 {
 	FragTrap	*John = new FragTrap("Little hoe");
-	FragTrap	*Martine = new FragTrap("Bitch");	
+	FragTrap	*Martine = new FragTrap("");	
 
 	John->takeDamage(2);
 
