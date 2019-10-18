@@ -11,21 +11,20 @@ ClapTrap::ClapTrap(std::string name)
 	std::srand(std::time(0));
 	std::cout << "A CL4P-TP is born, his name is " << name;
 	std::cout << std::endl;
-	this->_hitPoints = 100;
-	this->_maxHitPoints = 100;
-	this->_energyPoints = 100;
-	this->_maxEnergyPoints = 100;
-	this->_level = 1;
+	this->_hitPoints = 0;
+	this->_maxHitPoints = 0;
+	this->_energyPoints = 0;
+	this->_maxEnergyPoints = 0;
+	this->_level = 0;
 	this->_name = name;
-	this->_meleeAttackDamage = 30;
-	this->_rangedAttackDamage = 20;
-	this->_armorDamageReduction = 5;
+	this->_meleeAttackDamage = 0;
+	this->_rangedAttackDamage = 0;
+	this->_armorDamageReduction = 0;
 }
 
 ClapTrap::ClapTrap(ClapTrap const & src)
 {
 	std::cout << "copy of " << src.getName();
-	std::cout << " to " << this->getName();
 	std::cout << std::endl;
 	*this = src;
 }
