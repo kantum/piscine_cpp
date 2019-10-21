@@ -1,7 +1,6 @@
 #include <string>
 #include <iostream>
 #include "Bureaucrat.hpp"
-
 int		main()
 {
 	try
@@ -43,7 +42,6 @@ int		main()
 	{
 		Bureaucrat *a = new Bureaucrat("Blaise");
 		a->setGrade(0);
-
 	}
 	catch(std::exception & e)
 	{
@@ -52,4 +50,4 @@ int		main()
 
 	return (0);
 }
-	 
+
