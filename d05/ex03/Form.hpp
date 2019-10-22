@@ -11,13 +11,28 @@ class Bureaucrat;
 class Form
 {
 	private:
-	const std::string	_name;
-	bool				_signed;
-	const int			_gradeToSign;
-	const int			_gradeToExecute;
+		const std::string	_name;
+		bool				_signed;
+		const int			_gradeToSign;
+		const int			_gradeToExecute;
 
 	public:
-	class GradeTooHighException : public std::exception
+		class IsNotSignedException : public std::exception
+	{
+		public:
+			IsNotSignedException(void);
+			IsNotSignedException(std::string const & name);
+			IsNotSignedException(IsNotSignedException const & src);
+			virtual ~IsNotSignedException(void) throw();
+
+			IsNotSignedException & operator=(IsNotSignedException const & rhs);
+			virtual const char *what() const throw()
+			{
+				return ("Form: IsNotSignedException");
+			}
+	};
+
+		class GradeTooHighException : public std::exception
 	{
 		public:
 			GradeTooHighException(void);
@@ -32,7 +47,7 @@ class Form
 			}
 	};
 
-	class GradeTooLowException : public std::exception
+		class GradeTooLowException : public std::exception
 	{
 		public:
 			GradeTooLowException(void);
@@ -48,22 +63,22 @@ class Form
 			}
 	};
 
-	Form(void);
-	Form(std::string const & name,
-			const int gradeToSign,
-			const int gradeToExecute);
-	Form(Form const & src);
-	virtual ~Form(void);
+		Form(void);
+		Form(std::string const & name,
+				const int gradeToSign,
+				const int gradeToExecute);
+		Form(Form const & src);
+		virtual ~Form(void);
 
-	Form & operator=(Form const & rhs);
-	std::string		getName() const;
-	int				getGradeToSign(void) const;
-	int				getGradeToExecute(void) const;
-	bool			getSigned(void) const;
-	bool			beSigned(Bureaucrat & b);
-	void			setSigned(bool s);
-	virtual void	executeFunction(void) const = 0;
-	void			execute(Bureaucrat const & executor) const;
+		Form & operator=(Form const & rhs);
+		std::string		getName() const;
+		int				getGradeToSign(void) const;
+		int				getGradeToExecute(void) const;
+		bool			getSigned(void) const;
+		bool			beSigned(Bureaucrat & b);
+		void			setSigned(bool s);
+		virtual void	executeFunction(void) const = 0;
+		void			execute(Bureaucrat const & executor) const;
 };
 
 std::ostream& operator<<(std::ostream &out, const Form& c);
